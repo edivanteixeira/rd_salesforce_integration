@@ -1,8 +1,6 @@
 # RdSalesforceIntegration
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rd_salesforce_integration`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem lets you send data from one model to an entity 's salesforce
 
 ## Installation
 
@@ -22,18 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Insert in your model as properts
+```ruby
+class Contact < ActiveRecord::Base
+  save_salesforce_field 'Contato', true, [{:local_field=> :name, :salesforce_field=> :name} ,{:local_field=> :website, :salesforce_field=> :website, :custom=>true}]
+  set_salesforce_autheticate {:username => 'foo@force.com',
+    :password       => 'password',
+    :security_token => 'token',
+    :client_id      => 'casdasda2342342',
+    :client_secret  => '1234566'}
+end
+```
+The method require a Name of entity, if a entity is custom entity, and array with mappings of fields :
+```ruby
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/rd_salesforce_integration/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+[]{:local_field=> :name, :salesforce_field=> :name}]
+```
+local_field is name of property to model
+salesforce_field is name of property in salesforce
