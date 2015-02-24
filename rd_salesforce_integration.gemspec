@@ -18,6 +18,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
+  #dependencies
+  spec.add_dependency "restforce"
+  spec.add_dependency "activerecord"
+  
+  #end dependencies
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -25,4 +30,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.8"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency "sqlite3-ruby"
+  spec.add_development_dependency "debugger"
+  
+  
 end
